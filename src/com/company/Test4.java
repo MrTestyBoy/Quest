@@ -14,8 +14,8 @@ public class Test4 {
         Sum += I;
         System.out.print("Input z: ");
         I = in.nextDouble();
-        Sum = Math.floor((Sum + I) / 3);
-        System.out.printf("Result: %5.2f \n", Sum);
+        Sum = (Sum + I) / 3;
+        System.out.printf("Result: %5.2f \n", (Math.floor(Sum*100)/100));
         in.close();
     }
 }
