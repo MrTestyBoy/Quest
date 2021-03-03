@@ -9,7 +9,7 @@ public class Test16 {
         String s = in.nextLine();
         String[] sm = s.split("");
         int[] z = new int[3];
-        int i = 1, x = 0, res, dec = 1;
+        int i = 1, x = 0, res=0, dec = 1;
         for(String c:sm ){
             Pattern p = Pattern.compile("[0-9]$");
             if(p.matcher(c).find()){
@@ -22,7 +22,6 @@ public class Test16 {
                 if(c.equals("x")){
                     i--;
                     x = i;
-                    System.out.println("x=" + i);
                     if(x==3){
                         res = z[0] + (z[1]*dec);
                     }
@@ -31,9 +30,10 @@ public class Test16 {
         }
         if(x == 2){
             res = (z[2] - z[0])*dec;
-        }else{
-            res = z[2] - (z[1])*dec;
         }
-        System.out.println("x=" + res);
+        if(x == 1) {
+            res = z[2] - (z[1] * dec);
+        }
+        System.out.println("x= " + res);
     }
 }
