@@ -1,38 +1,20 @@
 package com.company;
 
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class Test16 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
+        System.out.println("Уравнение:");
         String s = in.nextLine();
+        String[] sx = s.split("x");
         String[] sm = s.split("");
-        int[] z = new int[3];
-        int i = 1, x = 0, res=0, dec = 1;
-        for(String c:sm ){
-            Pattern p = Pattern.compile("[0-9]$");
-            if(p.matcher(c).find()){
-                z[i - 1] = z[i - 1]*10+ Integer.parseInt(c);
-            } else {
-                i++;
-                if(c.equals("-")){
-                    dec = -1;
-                }
-                if(c.equals("x")){
-                    i--;
-                    x = i;
-                    if(x==3){
-                        res = z[0] + (z[1]*dec);
-                    }
-                }
-            }
-        }
-        if(x == 2){
-            res = (z[2] - z[0])*dec;
-        }
-        if(x == 1) {
-            res = z[2] - (z[1] * dec);
+        int res, dec = 1;
+        dec = (sm[1].equals("-"))?-1:dec;
+        if(sx.length == 2){
+            res = (sx[0].equals(""))?(Integer.parseInt(sm[4]) - (Integer.parseInt(sm[2])*dec)):((Integer.parseInt(sm[4]) - Integer.parseInt(sm[0]))*dec);
+        } else {
+            res = Integer.parseInt(sm[0]) + (Integer.parseInt(sm[2])*dec);
         }
         System.out.println("x= " + res);
     }
