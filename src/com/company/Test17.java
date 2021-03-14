@@ -14,11 +14,22 @@ public class Test17 {
         for (int i = 1; i-1<x; i++){
             System.out.print("Строка "+ i + ": ");
             s[i] = in.nextLine();
-            String sm[] = s[i].split("");
-            String sx="";
+            String[] sm = s[i].split("");
+            StringBuilder sx= new StringBuilder();
             for(String c:sm ){
                 Pattern p = Pattern.compile("[]"+ sx +"]");
-                sx += (!p.matcher(c).find())?c:"";
+                sx.append((!p.matcher(c).find()) ? c : "");
+            }
+            String[] st = sx.toString().split("");
+            int n = sx.length()-1;
+            for (; n>=0; n--){
+                int t = 0;
+                for (String c : sm) {
+                    if (c.equals(st[n])) {
+                        t++;
+                    }
+                }
+                sx = new StringBuilder((t > 1) ? sx.substring(0, sx.length() - 1) : sx.toString());
             }
             if(max<sx.length()){
                 y=i;
